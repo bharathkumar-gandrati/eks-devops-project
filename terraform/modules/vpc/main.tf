@@ -41,12 +41,10 @@ resource "aws_internet_gateway" "earth_igw" {
 # Create a route table and associate it with the vpc and IGW
 resource "aws_route_table" "earth_routetable" {
   vpc_id = aws_vpc.earth_vpc.id
-
   route {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.earth_igw.id
   }
-
   tags = {
     Name = "earth-routetable"
   }
