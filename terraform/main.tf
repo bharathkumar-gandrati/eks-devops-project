@@ -4,12 +4,12 @@ module "vpc" {
   
 }
 
-module "ec2" {
+/*module "ec2" {
   source   = "./modules/ec2"
 
   earth_vpc_id = module.vpc.earth_vpc_id
   earth_subnet1_id = module.vpc.earth_subnet1_id
-}
+}*/
 
 
 module "eks" {

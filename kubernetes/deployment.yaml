@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trozen-rtp
+  namespace: trozen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trozen-rtp
+  template:
+    metadata:
+      labels:
+        app: trozen-rtp
+    spec:
+      containers:
+      - name: trozen-rtp
+        image: nginx
+        ports:
+        - containerPort: 80

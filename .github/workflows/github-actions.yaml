@@ -1,0 +1,47 @@
+name: Deploy to AWS EKS
+
+on:
+  workflow_dispatch:
+    inputs:
+      trigger:
+        description: 'Trigger the workflow manually'
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: latest 
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: latest
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION_ID }} 
+
+      - name: Run Terraform Init
+        working-directory: terraform
+        run: terraform init
+
+      - name: Run Terraform Apply
+        working-directory: terraform
+        run: terraform apply -auto-approve
+
+      - name: Configure kubectl for AWS EKS
+        run: aws eks --region ap-south-1 update-kubeconfig --name earth 
+
+      - name: Deploy Kubernetes Resources
+        run: ./kubernetes/deploy.sh 
