@@ -21,7 +21,7 @@ terraform {
   backend "s3" {
     bucket = "terraform-earth-statefile"
     key    = "terraform/terraform.tfstate"
-    region = "ap-earth-1"
+    region = "ap-south-1"
     #profile = "Bharath_Kumar"
     #access_key = [Bharath_Kumar]
     #secret_key = [Bharath_Kumar]
