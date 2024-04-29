@@ -9,6 +9,6 @@ DEPLOYMENT_FILE="deployment.yaml"
 SERVICE_FILE="service.yaml"
 
 # Apply Kubernetes resources using the defined paths
-kubectl delete -f "$NAMESPACE_FILE"
-kubectl delete -f "$DEPLOYMENT_FILE"
 kubectl delete -f "$SERVICE_FILE"
+kubectl delete -f "$DEPLOYMENT_FILE"
+kubectl delete -f "$NAMESPACE_FILE"
