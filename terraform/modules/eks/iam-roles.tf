@@ -2,12 +2,10 @@
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
-
     principals {
       type        = "Service"
       identifiers = ["eks.amazonaws.com"]
     }
-
     actions = ["sts:AssumeRole"]
   }
 }
@@ -22,7 +20,6 @@ resource "aws_iam_role_policy_attachment" "earth-AmazonEKSClusterPolicy" {
   role       = aws_iam_role.earth-cluster.name
 }
 
-
 resource "aws_iam_role_policy_attachment" "earth-AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
   role       = aws_iam_role.earth-cluster.name
@@ -30,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "earth-AmazonEKSVPCResourceController"
 
 
 
-################  IAM Role for EKS Node Group  ###############
+# IAM Role for EKS Node Group 
 
 resource "aws_iam_role" "earth-node" {
   name = "eks-node-group-earth"

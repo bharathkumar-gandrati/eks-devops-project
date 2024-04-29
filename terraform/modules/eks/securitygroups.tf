@@ -1,4 +1,4 @@
-### Worker Node SG ####s
+# Worker Node Security Group 
 resource "aws_security_group" "worker_node_sg" {
   name        = "eks-earth"
   description = "Allow ssh inbound traffic"
