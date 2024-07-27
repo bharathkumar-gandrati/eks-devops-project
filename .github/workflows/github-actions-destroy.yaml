@@ -33,14 +33,14 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION_ID }} 
 
       
-      - name: Configure kubectl for AWS EKS
-        run: aws eks --region ap-south-1 update-kubeconfig --name earth 
+#      - name: Configure kubectl for AWS EKS
+#        run: aws eks --region ap-south-1 update-kubeconfig --name earth 
 
-      - name: Set executable permissions for delete.sh
-        run: chmod +x kubernetes/delete.sh
+#      - name: Set executable permissions for delete.sh
+#        run: chmod +x kubernetes/delete.sh
 
-      - name: Deploy Kubernetes Resources
-        run: ./kubernetes/delete.sh
+#      - name: Deploy Kubernetes Resources
+#        run: ./kubernetes/delete.sh
 
       - name: Run Terraform Init
         working-directory: terraform
