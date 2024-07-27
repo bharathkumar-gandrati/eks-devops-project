@@ -40,11 +40,11 @@ jobs:
         working-directory: terraform
         run: terraform apply -auto-approve
 
-      - name: Configure kubectl for AWS EKS
-        run: aws eks --region ap-south-1 update-kubeconfig --name earth 
+ #     - name: Configure kubectl for AWS EKS
+ #       run: aws eks --region ap-south-1 update-kubeconfig --name earth 
 
-      - name: Set executable permissions for deploy.sh
-        run: chmod +x kubernetes/deploy.sh
+ #     - name: Set executable permissions for deploy.sh
+ #       run: chmod +x kubernetes/deploy.sh
 
-      - name: Deploy Kubernetes Resources
-        run: ./kubernetes/deploy.sh
+ #     - name: Deploy Kubernetes Resources
+ #       run: ./kubernetes/deploy.sh
